@@ -10,6 +10,7 @@ android {
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
         release {
@@ -29,4 +30,10 @@ dependencies {
     compile "com.android.support:appcompat-v7:$android_support_lib_version"
     compile "com.android.support:support-v4:$android_support_lib_version"
     compile "com.android.support:design:$android_support_lib_version"
+
+    androidTestCompile 'com.android.support:support-annotations:23.2.0'
+    androidTestCompile 'com.android.support.test:runner:0.4.1'
+    androidTestCompile 'com.android.support.test:rules:0.4.1'
+    androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2.1'
+    androidTestCompile 'junit:junit:4.12'
 }

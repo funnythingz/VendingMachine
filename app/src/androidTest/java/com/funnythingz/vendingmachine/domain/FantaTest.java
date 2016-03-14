@@ -9,11 +9,11 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @RunWith(AndroidJUnit4.class)
-public class BalanceTest extends TestCase {
+public class FantaTest extends TestCase {
 
     @Test
-    public void testGetValue() throws Exception {
-        Balance balance = new Balance(1000);
-        Assert.assertEquals(balance.getValue(), 1000);
+    public void testGetDrinkName() throws Exception {
+        Fanta fanta = new Fanta();
+        Assert.assertEquals(fanta.getDrinkName().getValue(), "ファンタ");
     }
 }
