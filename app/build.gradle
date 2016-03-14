@@ -22,5 +22,11 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:23.2.0'
+
+    ext.android_support_lib_version = "23.2.0"
+
+    compile "com.android.support:gridlayout-v7:$android_support_lib_version"
+    compile "com.android.support:appcompat-v7:$android_support_lib_version"
+    compile "com.android.support:support-v4:$android_support_lib_version"
+    compile "com.android.support:design:$android_support_lib_version"
 }
