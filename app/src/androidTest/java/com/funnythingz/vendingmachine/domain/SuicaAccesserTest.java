@@ -12,6 +12,7 @@ import org.junit.runner.RunWith;
 
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.nullValue;
 
 @RunWith(AndroidJUnit4.class)
 public class SuicaAccesserTest extends TestCase {
@@ -33,6 +34,7 @@ public class SuicaAccesserTest extends TestCase {
         Balance readedBalance = SuicaAccesser.readBalance(suica);
         Assert.assertThat(readedBalance, is(equalTo(suica.getBalance())));
         Assert.assertEquals(readedBalance.getValue(), suica.getBalance().getValue());
+        Assert.assertThat(SuicaAccesser.readBalance(null), nullValue());
     }
 
     @Test
