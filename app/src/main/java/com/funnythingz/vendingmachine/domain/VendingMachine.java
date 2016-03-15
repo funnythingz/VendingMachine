@@ -13,23 +13,25 @@ public class VendingMachine {
         clearPurchased();
     }
 
-    public Drink selectDrinkButton(DrinkMenu drinkMenu) {
+    public void selectDrinkButton(DrinkMenu drinkMenu) {
         switch (drinkMenu) {
             case Cola:
-                return new Cola();
+                selectDrink = new Cola();
+                break;
             case Fanta:
-                return new Fanta();
+                selectDrink = new Fanta();
+                break;
             case Soda:
-                return new Soda();
+                selectDrink = new Soda();
+                break;
             case Pocali:
-                return new Pocali();
+                selectDrink = new Pocali();
+                break;
         }
-
-        return null;
     }
 
     public void touchSuica(Suica suica) {
-        if (isSelectDrink()) {
+        if (isSelectDrink() && !isBought) {
             readSuicaBalance(suica);
             if (isReadedSuicaBalance()) {
                 updateSuicaBalance(suica);
@@ -54,7 +56,7 @@ public class VendingMachine {
         int result = suicaBalance.getValue() - price.getValue();
         if (result >= 0) {
             purchased();
-            new Balance(result);
+            return new Balance(result);
         }
 
         return null;
@@ -62,6 +64,14 @@ public class VendingMachine {
 
     private boolean isSelectDrink() {
         return (selectDrink != null && selectDrink instanceof Drink);
+    }
+
+    public Drink hasSelectDrink() {
+        if (isSelectDrink()) {
+            return selectDrink;
+        }
+
+        return null;
     }
 
     private boolean isReadedSuicaBalance() {
@@ -86,7 +96,7 @@ public class VendingMachine {
 
     public Drink drinkOutlet() {
         if (isBought) {
-            Drink outDrink = selectDrink;
+            Drink outDrink = hasSelectDrink();
             clearSelectDrink();
             clearSuicaBalance();
             clearPurchased();
